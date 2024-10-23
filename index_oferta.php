@@ -8,16 +8,11 @@
 </head>
 
 <?php    
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-
-    $conn = new mysqli($servername,$username,$password, "firma");
+    require_once "conn.php"; 
     
     if(mysqli_connect_error()) {
         die("conn" . mysqli_connect_error());
     }
-
 ?>
 
 <body>
