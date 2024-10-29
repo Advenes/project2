@@ -65,7 +65,7 @@ if($result-> num_rows > 0){
         $row['nazwa'] . '</div>' . '<div class="desc">' . ''
         . '<div class="right2">'  . "<b>$cena</b> zł" . '<div class="stan">' . $row['stan'] .
          '</div><div class="ilosc">' . "ilość na stanie: " . $row['ilosc'] . '</div></div>' . 
-         "<form><a href='index_oferta.php?id={$row['id']}'.'><button type='button' class='btn' style='width:90px;height:37px;cursor:pointer;font-size:14px;'>ZAMÓW</button></a></form></div></div></div>"
+         "<form><a href='index_oferta.php?id={$row['id']}'.'><button type='button' class='btn' style='background-color:white; border-radius:5px; border: 1px solid black; width:90px;height:40px;cursor:pointer;font-size:14px; font-family: Montserrat, sans-serif;'>ZAMÓW</button></a></form></div></div></div>"
         
         . '';
     }

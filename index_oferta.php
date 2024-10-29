@@ -65,24 +65,20 @@ $result = $conn-> query($sql);
 if($result-> num_rows > 0){
     while ($row = $result-> fetch_assoc()) {
         $id = $row['id'];
-        echo "<div id='$id'></div>";
         $cena = $row["cena"];
         $ilosc = $row["ilosc"];
         $ilosczdjeczag = $row['ilosczdj'];
         
-        echo "<div class='titlein'>" . $row["nazwa"] . "</div>
-        <div class='stan_oferta'> Stan: " . $row["stan"] . "</div>
+        echo "
         <div class='double_oferta'>
             <div class='galeria'>
                 <div class='carousel'>
                     <div class='carousel-inner' id='carouselInner'>";
 
-        // Loop through each image
         for ($iloscid = 1; $iloscid <= $ilosczdjeczag; $iloscid++) {
-            // Determine the active image
             $akt = $row['zdj' . $iloscid];
 
-            // Display the carousel items with active class for the first image
+            // DISPLAY CAROUSEL
             if ($iloscid == 1) {
                 echo "<div class='carousel-item active'>
                         <a href='photo.php?id={$row['id']}'.'><img src='$akt' style='width:400px'></a>
@@ -100,8 +96,10 @@ if($result-> num_rows > 0){
                 </div>
             </div>";
 
-        // Continue with the rest of the code
-        echo "<div class='cena_oferta'>Cena: <b>" . $row["cena"] . "</b> zł<br>
+        // END OF CAROUSEL
+        echo "<div class='tittleandbutton'><div class='title'>" . $row["nazwa"] . "</div>
+        <div class='stan_oferta'> Stan: " . $row["stan"] . "</div>
+        <div class='cena_oferta'>Cena: <b>" . $row["cena"] . "</b> zł<br>
             <phone>od: " . $row['telefon'] . "</phone></div>
             <div class='column'>
                 <div class='ilosc_cena'>
@@ -113,9 +111,9 @@ if($result-> num_rows > 0){
                     </div>
                     <button type='button' class='btn' style='width:140px;height:47px;cursor:pointer;font-size:25px;'>" . $row["cena"] . "zł</button>
                 </div>
-            </div>
+            </div></div>
             <br><br>
-            <div class='opis-oferta'>Opis produktu:<br><phone>" . $row['opis'] . "</phone></div>
+            <div class='opis-oferta'><br><br>Opis produktu:<br><phone2>" . $row['opis'] . "</phone2></div>
             <br><br>
             <div class='opis-oferta'>Kontakt do sprzedawcy:<br><phone>" . $row['telefon'] . "</phone></div>";
     }
@@ -144,8 +142,6 @@ const inputElement = document.getElementById('ilosc-input');
 function setInputValue(value){
         document.getElementById('ilosc-input').value = value;
         }
-
-        // Add event listeners to the buttons
         document.getElementById('ilosc-add').addEventListener('click', function() {
             value = document.getElementById('ilosc-input').value;
             if(value < max){

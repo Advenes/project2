@@ -23,6 +23,11 @@
 
 }
 
+.opis-oferta{
+    display: flex;
+    flex-wrap:wrap;
+}
+
 .sctitle{
     display: flex;
     flex-wrap:wrap;
@@ -207,7 +212,8 @@ a:hover{
     display: flex;
     flex-wrap:wrap;
     justify-content: center;
-    width: 80%;
+    width: 1200px;
+    font-family: "Montserrat", sans-serif;
 }
 
 .stan_oferta{
@@ -216,17 +222,20 @@ a:hover{
     justify-content: left;
     font-size: 15px;
     text-transform: uppercase;
-    margin-bottom: 10px;
 }
 .double_oferta{
     display: flex;
     flex-wrap:wrap;
-    align-items: row;
     flex-direction: row;
+    justify-content: center;
 }
 phone{
     font-size: 18px;
     color: rgb(204, 204, 204);
+}
+phone2{
+    font-size: 18px;
+    color: rgb(148, 148, 148);
 }
 .ilosc_cena{
     display: flex;
@@ -282,11 +291,8 @@ input::-webkit-inner-spin-button{
 .column{
     display: flex;
     flex-wrap:wrap;
-    align-items: center;
     flex-direction: center;
     justify-content:end;
-    margin-left: 200px;
-    margin-top: 100px;
 }
 .rowno{
     align-items: left;
@@ -350,4 +356,15 @@ input::-webkit-inner-spin-button{
 .carousel-control-next {
     right: 10px;
 
+}
+
+.title{
+    font-size: 30px;
+}
+.tittleandbutton{
+    width: 300px;
+    border: 1px solid rgb(206, 206, 206);
+    border-radius: 5px;
+    padding: 15px;
+    margin-inline: 100px;
 }
