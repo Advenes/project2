@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
 </head>
 
 <?php    
@@ -17,16 +17,31 @@
 
 <body>
 
-<a href="index.php"><div class="header"><ht><div class="textup">FIRMA</div></ht></a>
-    <div class="formtop"><form action="index_search.php" method="POST" style="margin:0px;display:inline-block"><input type="text" name="searchbar" class="inputtop" placeholder="wyszukaj...">
-    <input type="submit" value="search" style="width:60px; font-size:16px; background-color: rgb(0, 69, 90); height:37px"></form></div>
-    <div class="username" style="font-size: 20px; margin-top: 30px; padding-left:100px;">Użytkownik: <?php echo($username)?></div>
+<div class="main">
+
+    <div class="header">
+        <div class="scaling">
+            <a href="index.php">Firma</a>
+            <div class="headerhrefs">
+                <div class="account"><a>ACCOUNT</a></div>
+                <div class="youroffers"><a>YOUR OFFERS</a></div>
+                <div class="support"><a>SUPPORT</a></div>
+                <button onclick="openin()" style="all:unset; cursor: pointer;height: 40px;margin-bottom:5px"><div id="src"><a><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                </svg></a></button>
+            </div>
+        </div>
     </div>
 
-    <div class="all">
-
-        <div class="oferta_box">
-        
+    <div class="topbar" id="topbar">
+        <form action="index_search.php" method="POST">
+            <input type="text" name="searchbar" class="inputtop" placeholder="  Search">
+            <button type="submit" class="searchbutton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+            </svg></button>
+        </form>
+    </div>
+    <div class="offerinside">
 
         <?php
         $id = $_GET['id'];
@@ -110,12 +125,17 @@ if($result-> num_rows > 0){
 
 $conn-> close();
 ?>
-
-        </div>
+        </div></div>
 
     </div>
 
-    <script>
+    <script type="text/javascript">
+
+const topbar = document.getElementById("topbar");
+
+function openin() {
+    topbar.classList.toggle('active');
+}
 
 const inputElement = document.getElementById('ilosc-input');
             const min = parseInt(inputElement.getAttribute('min'));

@@ -8,15 +8,13 @@
 </head>
 
 <?php    
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-
-    $conn = new mysqli($servername,$username,$password, "firma");
+    require_once "conn.php";
     
     if(mysqli_connect_error()) {
         die("conn" . mysqli_connect_error());
     }
+
+    $id = $_GET['id'];
 
 ?>
 
@@ -48,7 +46,88 @@
     </div>
 
     <div class="filters"></div>
-    <div class="offers"></div>
+    
+    <div class="offers">
+
+    <?php
+
+$sql = "SELECT `id`,`zdj1`,`zdj2`,`zdj3`,`zdj4`,`zdj5`,
+(CASE WHEN `zdj1` IS NULL OR `zdj1` = '0' OR `zdj1` = '' THEN 0 ELSE 1 END +
+CASE WHEN `zdj2` IS NULL OR `zdj2` = '0' OR `zdj1` = '' THEN 0 ELSE 1 END +
+CASE WHEN `zdj3` IS NULL OR `zdj3` = '0' OR `zdj1` = '' THEN 0 ELSE 1 END +
+CASE WHEN `zdj4` IS NULL OR `zdj4` = '0' OR `zdj1` = '' THEN 0 ELSE 1 END +
+CASE WHEN `zdj5` IS NULL OR `zdj5` = '0' OR `zdj1` = '' THEN 0 ELSE 1 END
+) AS `ilosczdj`, `nazwa`, `opis`, `telefon`, `stan`, `cena`, `ilosc` from `oferty` where id = $id";
+$result = $conn-> query($sql);
+
+if($result-> num_rows > 0){
+    while ($row = $result-> fetch_assoc()) {
+        $id = $row['id'];
+        echo "<div id='$id'></div>";
+        $cena = $row["cena"];
+        $ilosc = $row["ilosc"];
+        $ilosczdjeczag = $row['ilosczdj'];
+        
+        echo "<div class='titlein'>" . $row["nazwa"] . "</div>
+        <div class='stan_oferta'> Stan: " . $row["stan"] . "</div>
+        <div class='double_oferta'>
+            <div class='galeria'>
+                <div class='carousel'>
+                    <div class='carousel-inner' id='carouselInner'>";
+
+        // Loop through each image
+        for ($iloscid = 1; $iloscid <= $ilosczdjeczag; $iloscid++) {
+            // Determine the active image
+            $akt = $row['zdj' . $iloscid];
+
+            // Display the carousel items with active class for the first image
+            if ($iloscid == 1) {
+                echo "<div class='carousel-item active'>
+                        <a href='photo.php?id={$row['id']}'.'><img src='$akt' style='width:400px'></a>
+                      </div>";
+            } else {
+                echo "<div class='carousel-item'>
+                        <a href='photo.php?id={$row['id']}'.'><img src='$akt' style='width:400px'></a>
+                      </div>";
+            }
+        }
+
+        echo "      </div>
+                    <button class='carousel-control-prev' onclick='prevSlide()'>‹</button>
+                    <button class='carousel-control-next' onclick='nextSlide()'>›</button>
+                </div>
+            </div>";
+
+        // Continue with the rest of the code
+        echo "<div class='cena_oferta'>Cena: <b>" . $row["cena"] . "</b> zł<br>
+            <phone>od: " . $row['telefon'] . "</phone></div>
+            <div class='column'>
+                <div class='ilosc_cena'>
+                    <div class='ilosc'>ilość: " . $row['ilosc'] . "</div>
+                    <div class='ilosc-suw'>
+                        <button id='ilosc-mns' data-action='minus' type='button'>-</button>
+                        <input id='ilosc-input' class='ilosc-inpt' type='number' name='ilosc-inpt' min='1' max='$ilosc' value='1'>
+                        <button id='ilosc-add' data-action='add' type='button'>+</button>
+                    </div>
+                    <button type='button' class='btn' style='width:140px;height:47px;cursor:pointer;font-size:25px;'>" . $row["cena"] . "zł</button>
+                </div>
+            </div>
+            <br><br>
+            <div class='opis-oferta'>Opis produktu:<br><phone>" . $row['opis'] . "</phone></div>
+            <br><br>
+            <div class='opis-oferta'>Kontakt do sprzedawcy:<br><phone>" . $row['telefon'] . "</phone></div>";
+    }
+} else {
+    echo "no results";
+}
+
+$conn-> close();
+?>
+
+</div>
+
+    </div>
+
     <div class="ad"></div>
     <div class="footer"></div>
 
