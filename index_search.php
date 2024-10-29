@@ -52,8 +52,8 @@
     <div class="offers">
     <div class="sctitle">Wyniki wyszukiwania:</div>
     <?php
-
-$sql = "SELECT id, zdj1, nazwa, opis, telefon, stan, cena, ilosc from oferty";
+$searchbar = $_POST["searchbar"];
+$sql = "SELECT  id, zdj1, nazwa, opis, telefon, stan, cena, ilosc from oferty where nazwa like '%$searchbar%'";
 $result = $conn-> query($sql);
 
 if($result-> num_rows > 0){
