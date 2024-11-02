@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>second</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 
 <?php    
@@ -42,43 +42,15 @@
         </form>
     </div>
 
-    <div class="filters"></div>
-    
-    <div class="offers">
 
-    <?php
-
-$sql = "SELECT id, zdj1, nazwa, opis, telefon, stan, cena, ilosc from oferty";
-$result = $conn-> query($sql);
-
-if($result-> num_rows > 0){
-    while ($row = $result-> fetch_assoc()) {
-        $zdj = $row["zdj1"];
-        $cena = $row["cena"];
-        $id = $row['id'];
-        echo '<div class="ofert">' . '<div class="left"><img class="ofertimage" style="width: 200px" src=' .  $zdj . '/></div>' . '<div class="right"><div class="oferttitle">' .
-        $row['nazwa'] . '</div>' . '<div class="desc">' . ''
-        . '<div class="right2">'  . "<b>$cena</b> zł" . '<div class="stan">' . $row['stan'] .
-         '</div><div class="ilosc">' . "ilość na stanie: " . $row['ilosc'] . '</div></div>' . 
-         "<form><a href='index_oferta.php?id={$row['id']}'.'><button type='button' class='btn' style='background-color:white; border-radius:5px; border: 1px solid black; width:90px;height:40px;cursor:pointer;font-size:14px; font-family: Montserrat, sans-serif;'>ZAMÓW</button></a></form></div></div></div>"
-        
-        . '';
-    }
-}
-else{
-    echo "no results";
-}
-
-$conn-> close();
-
-?>
-
-</div>
-
+    <div class="mainLogin">
+        <h2>Login</h2>
+        <form method="post" action="backendLoginPage.php">
+            <div class="input1">EMAIL: <br><input type="email" name="email" required></div>
+            <div class="input2">PASSWORD: <br><input type="password" name="password" required></div>
+            <div class="input3"><input type="submit" name="button" value="LOGIN"></div>
+        </form>
     </div>
-
-    <div class="ad"></div>
-    <div class="footer"></div>
 
 </div>
 

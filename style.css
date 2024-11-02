@@ -1,26 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,500;1,500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
+
 *{
-    padding: 0px;
     margin: 0px;
-    color: white;
-}
-
-a{
-    text-decoration: none;
-}
-
-.header{
-    width: 100%;
-    text-align: left;
-    font-size: 50px;
-    font-family: "Roboto Condensed", sans-serif;
-    display: flex;
-    flex-wrap:wrap;
-    justify-content: center;
-    align-items: row;
-    background-color: rgb(25, 109, 134);
+    padding: 0px;
 }
 .all{
     display: flex;
@@ -39,31 +22,10 @@ a{
     height: 100%;
 
 }
-.textup{
-    margin-top: 12px;
-}
-.inputtop{
-    margin-left: 30px;
-    border: 1px solid;
-    font-size: 17px;
-    padding: 5px;
-    height: 25px;
-    background-color: rgb(0, 69, 90);
-}
-.formtop{
-    margin-bottom: 20px;
+
+.opis-oferta{
     display: flex;
     flex-wrap:wrap;
-    justify-content: center;
-    align-items: column;
-}
-ht{
-    text-decoration: none;
-}
-button{
-    background-color: rgb(0, 69, 90);
-    border: 1px solid;
-    border-style:groove;
 }
 
 .sctitle{
@@ -77,110 +39,203 @@ button{
     font-size: 30px;
     margin: 10px;
 }
-
-.oferty{
+.textup{
+    margin-top: 12px;
+}
+.main{
     display: flex;
     flex-wrap:wrap;
     justify-content: center;
-    align-items: column;
-    width: 1000px;
-    height: 100%;
-    font-family: "Nunito Sans", sans-serif;
+    align-items: center;
 }
-
-.oferta{
-    width: 98%;
-    margin: 5px;
-    background-color: rgb(0, 78, 102);
-    font-family: "Nunito Sans", sans-serif;
-    font-size: 24px;
+.inputtop{
+    background-color: #ffffff;
+    border: 1px solid;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    font-family: "Montserrat", sans-serif;
+    height: 30px;
+    width: 250px;
     display: flex;
-    flex-wrap:wrap;
-    justify-content: left;
-    align-items: column;
-    flex-direction: row;
-    overflow-y: hidden;
+    margin-left: 435px;
+}
+.searchbutton{
+width: 40px;
+height: 32px;
+border-top-left-radius: 0px;
+border-bottom-left-radius: 0px;
+border: 1px solid;
+border-left: 0px;
+border-top-right-radius: 5px;
+border-bottom-right-radius: 5px;
+}
+.header{
+    display: flex;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    text-decoration: none;
+    color: white;
+    background-color:#0e0d0d;
+    font-size: 40px;
     padding: 5px;
+    width: 100%;
+    box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 1);
+    z-index: 1;
 }
-.pic{
-    margin-right: 10px;
-}
-
-.oferta:hover{
-    background-color: rgb(0, 65, 85);
-}
-
-opis{
-    font-size: 15px;
-    width: 700px;
-}
-.inside{
+.scaling{
+    margin-top: 5px;
     display: flex;
+    justify-content:space-evenly;
+    justify-self: center;
+    flex-wrap:wrap;
+    width: 100%;
+}
+.header2{
+    display: flex;
+    justify-content:space-around;
+}
+.headerhrefs{
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    align-items: row;
     flex-wrap:wrap;
     justify-content: left;
-    align-items: column;
-    flex-direction: column;
 }
-.inside2{
-    display: flex;
-    flex-wrap:wrap;
-    justify-content: center;
-    align-items: column;
-    flex-direction: column;
+.headerhrefs div{
+    margin-inline: 10px;
+    margin-top: 15px;
     text-align: center;
+    margin-bottom: 13px;
 }
-button:hover{
-    background-color: rgb(0, 46, 60);
+a{
+    text-decoration: none;
+    color: white;
+    transition: 0.6s;
+}
+a:hover{
+    filter: brightness(0.9);
+}
+.topbar{
+    display: flex;
+    align-items: row;
+    padding: 10px;
+    flex-wrap:wrap;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    background-color: #202020;
+    transform: translateY(-60px);
+    transition: 0.4s;
+}
+.topbar.active{
+    transform: translateY(0px);
+}
+.topbar form{
+    display: flex;
+    align-items: row;
+}
+.searchbutton{
+    cursor: pointer;
+}
+#search{
+    cursor: pointer;
 }
 
-.oferta_box{
+/* OFFERS */
+
+.offers{
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.left{
+    display: flex;
+    flex-direction: column;
+}
+.right{
+    width: 60%;
+    font-size: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.rightlong{
+    display: flex;
+    flex-direction: row;
+}
+.stan{
+    font-size: 14px;
+}
+.ilosc{
+    font-size: 14px;
+}
+.right div{
+    margin-bottom: 3px;
+}
+
+.ofert{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center; 
+    width: 70%; 
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid rgb(206, 206, 206);
+    font-family: "Instrument Sans", sans-serif;
+    font-weight: 200;
+    transition: 0.1s ease-in-out;
+}
+.ofert img{
+    max-height: 200px;
+}
+
+.ofert:hover{
+    box-shadow: 0px 0px 6px 0px rgba(68, 68, 68, 1);
+}
+
+/* OFERTA_INDEX */
+
+.offerinside{
     display: flex;
     flex-wrap:wrap;
     justify-content: center;
-    align-items: column;
-    flex-direction: column;
-    width: 1000px;
-    height: 100%;
-    background-color: rgb(0, 58, 76);
-    margin: 30px;
-    font-family: "Nunito Sans", sans-serif;
-    font-size: 24px;
-    padding: 15px;
+    width: 1200px;
+    font-family: "Montserrat", sans-serif;
 }
-.inside_offer{
-    display: flex;
-    flex-wrap:wrap;
-    justify-content: left;
-    align-items: column;
-    flex-direction: column;
-    padding: 15px;
-}
-.titlein{
-    display: flex;
-    flex-wrap:wrap;
-    justify-content: left;
 
-    margin-right: 15px;
-    font-size: 35px;
-}
 .stan_oferta{
     display: flex;
     flex-wrap:wrap;
     justify-content: left;
-
     font-size: 15px;
     text-transform: uppercase;
-    margin-bottom: 10px;
 }
 .double_oferta{
     display: flex;
     flex-wrap:wrap;
-    align-items: row;
     flex-direction: row;
+    justify-content: center;
 }
 phone{
     font-size: 18px;
     color: rgb(204, 204, 204);
+}
+phone2{
+    font-size: 18px;
+    color: rgb(148, 148, 148);
 }
 .ilosc_cena{
     display: flex;
@@ -236,11 +291,8 @@ input::-webkit-inner-spin-button{
 .column{
     display: flex;
     flex-wrap:wrap;
-    align-items: center;
     flex-direction: center;
     justify-content:end;
-    margin-left: 200px;
-    margin-top: 100px;
 }
 .rowno{
     align-items: left;
@@ -249,36 +301,33 @@ input::-webkit-inner-spin-button{
     flex-direction:row;
     height: 100%;
 }
-
 .carousel {
-    width: 400px;
+    width: 400px; 
     height: 400px;
     position: relative;
-    overflow: hidden;
+    overflow: hidden; 
     margin: auto;
     margin-bottom: 10px;
     margin-right: 10px;
-}
-.carousel-notscalable {
     display: flex;
-    position: relative;
-    overflow: hidden;
-    margin: auto;
-    margin-bottom: 10px;
-    margin-right: 10px;
+    justify-items: center;
+    align-items: center;
 }
+
 .carousel-inner {
     display: flex;
-    flex-direction:row;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.1s ease-in-out;
+    justify-items: center;
+    align-items: center;
+    transition: transform 0.4s ease-in-out; 
+    transition: 0.2 ease-in-out;
+    width: 100%; 
 }
 
 .carousel-item {
-    min-width: 100%;
+    min-width: 100%; 
     height: 100%;
     display: flex;
+    flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
 }
@@ -306,8 +355,60 @@ input::-webkit-inner-spin-button{
 
 .carousel-control-next {
     right: 10px;
+
 }
-.ilosc-inpt{
-    background-color: rgb(0, 58, 76);
-    
+
+.title{
+    font-size: 30px;
+}
+.tittleandbutton{
+    width: 300px;
+    border: 1px solid rgb(206, 206, 206);
+    border-radius: 5px;
+    padding: 15px;
+    margin-inline: 100px;
+}
+
+.mainLogin{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(206, 206, 206);
+    padding: 10px;
+    border-radius: 5px;
+    font-family: "Montserrat", sans-serif;
+    width: 300px;
+}
+.mainLogin form div{
+    margin: 10px;
+}
+.input{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+.input3{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.input3 input{
+    background-color:white; 
+    border-radius:5px; 
+    width:90px;
+    height:40px;
+    cursor:pointer;
+    font-size:14px; 
+    font-family: Montserrat, sans-serif;
+}
+.mainLogin h2{
+    margin-bottom: 10px;
 }

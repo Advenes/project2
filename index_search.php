@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>second</title>
-    <link rel="stylesheet" type="text/css" href="style2.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
 <?php    
@@ -28,7 +28,7 @@
         <div class="scaling">
             <a href="index.php">Firma</a>
             <div class="headerhrefs">
-                <div class="account"><a>ACCOUNT</a></div>
+                <div class="account"><a href="loginPage.php">ACCOUNT</a></div>
                 <div class="youroffers"><a>YOUR OFFERS</a></div>
                 <div class="support"><a>SUPPORT</a></div>
                 <button onclick="openin()" style="all:unset; cursor: pointer;height: 40px;margin-bottom:5px"><div id="src"><a><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
