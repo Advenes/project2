@@ -412,3 +412,25 @@ input::-webkit-inner-spin-button{
 .mainLogin h2{
     margin-bottom: 10px;
 }
+signin{
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+signin a{
+    color: rgb(0, 89, 255);
+}
+
+wrg{
+    color:rgba(255, 0, 0, 0.61);
+    margin-top: 3px;
+    font-size: 14px;
+}
+.mainLogin div{
+    transform: translateX(7px);
+}
+i{
+    display: flex;
+    transform: translateX(10px);
+    cursor: pointer;
+}

@@ -1,10 +1,10 @@
-<!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>second</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <?php    
@@ -44,35 +44,58 @@
 
 
     <div class="mainLogin">
-        <h2>Login</h2>
-        <form method="post" action="backendLoginPage.php">
-            <div class="input1">EMAIL: <br><input type="email" name="email" required></div>
-            <div class="input2">PASSWORD: <br><input type="password" name="pass" required></div>
-            <div class="input3"><input type="submit" name="button" value="LOGIN"></div>
+        <h2>Register</h2>
+        <form method="post" action="backendRegisterPage.php">
+            <div class="input1">NAME: <br><input type="text" name="name" required></div>
+            <div class="input1">EMAIL: <br><input type="text" name="email" required></div>
+            <div class="input1">PHONE: <br><input type="text" name="phone" required></div>
+            <div class="input2">PASSWORD: <br><input type="password" id="pass" name="password" required><i onclick="changeType()" class='fas fa-eye'></i></div>
+            <div class="input3"><input type="submit" name="button" value="REGISTER"></div>
         </form>
-        <signin>Don't have an account? - <u><a href="registerPage.php">Sign in</a></u></signin>
-    
+        <signin>Have an account? - <u><a href="loginPage.php">Log in</a></u></signin>
+        <wrg>
+        <?php
 
-<wrg>
+        session_start();
 
-<?php
+        if($_SESSION['fail'] == 1){
+            echo("Credentials incorrect.");
+        }
 
-session_start();
+        $_SESSION['fail'] = 0;
+        $conn -> close();
+        ?>
+        </wrg>
+    </div>
 
-if($_SESSION['fail'] == 1){
-    echo("Login or password is incorrect");
-}
-
-$_SESSION['fail'] = 0;
-
-$conn -> close();
-?>
-</wrg>
 </div>
-</div>
+
 </body>
 
-<script type="text/javascript" src="script.js">
+<script>
+const topbar = document.getElementById("topbar");
+
+function openin() {
+    topbar.classList.toggle('active');
+}
+
+const input = document.getElementById("pass");
+var passShown = 0;
+
+function changeType(){
+    
+    if (passShown == 0){
+        passShown = 1;
+        input.type = "text";
+        console.log("active");
+    }
+    else{
+        passShown = 0;
+        input.type = "password";
+        console.log("not active");
+    }
+}
+
 </script>
 
 </html>

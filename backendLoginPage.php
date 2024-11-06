@@ -1,29 +1,28 @@
+
 <?php
+
+require_once 'conn.php';
+
+    if(mysqli_connect_error()){
+        die("error". mysqli_connect_error());
+    }
 
 session_start();
 
-require_once ("base.php");
+$email = $_POST["email"];
+$pass = $_POST["pass"];
 
-$name = $_POST['name'];
-$email = $_POST['email'];
-$password = $_POST['password'];
-
-if(empty($name) || empty($email) || empty($password)){
-
+$sql = "SELECT `email`,`password` from `konta` where `email` = '$email' && `password` = '$pass'";
+$result = $conn -> query($sql);
+if($result -> num_rows > 0){
+    $_SESSION['email'] = $email;
+    $_SESSION['password'] = $pass;
 }
 else{
-    $sql = "SELECT * from `users` WHERE `password` = '$password' && `email` = '$email' && `name` = '$name' ";
-    $result = @$conn->query($sql);
-    if($result->num_rows > 0){
-        echo "login succesful";
-        $_SESSION['name'] = $name;
-        $_SESSION['email'] = $email;
-        $_SESSION['password'] = $password;
-    }
-    else{
-        echo "login unsuccesful";
-    }
+    header("Location: loginPage.php");
+    $_SESSION['fail'] = 1;
+    exit();
 }
-header("Location: index.php");
-exit();
+$conn -> close();
+
 ?>
