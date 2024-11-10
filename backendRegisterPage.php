@@ -13,19 +13,24 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $phone = $_POST['phone'];
 
-$sql1 = "SELECT `email` from `konta` where '$email' = `email`";
-$result = $conn -> query($sql1);
+$sql = $conn -> "SELECT `email` from `konta` where '$email' = `email`";
+$sql -> bind_param("s", $email);
+$sql -> execute();
+$result = $sql -> get_result();
 if($result -> num_rows > 0 || strlen($name) < 3 || strlen($password) < 6 || strlen($phone) != 9){
     header('Location: registerPage.php');
     $_SESSION['fail'] = 1;
     exit();
 }
-echo('1');
-$sql2 = "INSERT INTO `konta`(`username`,`email`,`password`,`phone`) values ('$name','$email','$password','$phone')";
+// password hash
+$passwordh = password_hash($password,PASSWORD_DEFAULT);
+// hash password into database
+$sql2 = "INSERT INTO `konta`(`username`,`email`,`password`,`phone`) values ('$name','$email','$passwordh','$phone')";
 $query = $conn -> query($sql2);
 $_SESSION['email'] = $email;
-$_SESSION['password'] = $pass;
-session_close();
-
-$conn -> close();
+$_SESSION['password'] = $passwordh;
+$_SESSION['username'] = $username;
+$_SESSION['phone'] = $phone;
+header('Location: loginPage.php');
+exit();
 ?>

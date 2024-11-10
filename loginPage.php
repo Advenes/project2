@@ -13,6 +13,7 @@
     if(mysqli_connect_error()) {
         die("conn" . mysqli_connect_error());
     }
+    session_start();
 ?>
 
 <body>
@@ -23,7 +24,15 @@
         <div class="scaling">
             <a href="index.php">Firma</a>
             <div class="headerhrefs">
-                <div class="account"><a href="loginPage.php">ACCOUNT</a></div>
+                <div class="account">
+                <?php 
+                if($_SESSION['username'] == ""){
+                    echo("<a href='loginPage.php'>ACCOUNT</a></div>");
+                }
+                else{
+                    echo("<a href='userPanel.php'>ACCOUNT</a></div>");
+                }
+                ?>
                 <div class="youroffers"><a>YOUR OFFERS</a></div>
                 <div class="support"><a>SUPPORT</a></div>
                 <button onclick="openin()" style="all:unset; cursor: pointer;height: 40px;margin-bottom:5px"><div id="src"><a><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -57,10 +66,11 @@
 
 <?php
 
-session_start();
-
 if($_SESSION['fail'] == 1){
-    echo("Login or password is incorrect");
+    echo("Login is incorrect");
+}
+else if($_SESSION['fail'] == 2){
+    echo("Password is incorrect");
 }
 
 $_SESSION['fail'] = 0;

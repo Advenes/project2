@@ -1,22 +1,31 @@
+<?php
+require_once "conn.php";
+if(mysqli_connect_error()) {
+    die("conn" . mysqli_connect_error());
+}
+?>
+
+<!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>second</title>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+<body>
 
-<?php    
-    require_once "conn.php"; 
-    
-    if(mysqli_connect_error()) {
-        die("conn" . mysqli_connect_error());
+<?php
+    include_once 'conn.php';
+    if(mysqli_connect_error()){
+        die("error". mysqli_connect_error());
     }
     session_start();
+    $name = $_SESSION['username'];
+    $email = $_SESSION['email'];
 ?>
 
-<body>
+    
 
 <div class="main">
 
@@ -51,58 +60,17 @@
         </form>
     </div>
 
-
-    <div class="mainLogin">
-        <h2>Register</h2>
-        <form method="post" action="backendRegisterPage.php">
-            <div class="input1">NAME: <br><input type="text" name="name" required></div>
-            <div class="input1">EMAIL: <br><input type="text" name="email" required></div>
-            <div class="input1">PHONE: <br><input type="text" name="phone" required></div>
-            <div class="input2">PASSWORD: <br><input type="password" id="pass" name="password" required><i onclick="changeType()" class='fas fa-eye'></i></div>
-            <div class="input3"><input type="submit" name="button" value="REGISTER"></div>
-        </form>
-        <signin>Have an account? - <u><a href="loginPage.php">Log in</a></u></signin>
-        <wrg>
-        <?php
-
-        if($_SESSION['fail'] == 1){
-            echo("Credentials incorrect.");
-        }
-
-        $_SESSION['fail'] = 0;
-        $conn -> close();
-        ?>
-        </wrg>
+    <div class="mainProfile">
+        <name><?php echo($name); ?></name>
+    <div class="logout">
+        <u><a href="logout.php">Logout</a></u>
+    </div>
     </div>
 
-</div>
 
+</div>
 </body>
 
-<script>
-const topbar = document.getElementById("topbar");
-
-function openin() {
-    topbar.classList.toggle('active');
-}
-
-const input = document.getElementById("pass");
-var passShown = 0;
-
-function changeType(){
-    
-    if (passShown == 0){
-        passShown = 1;
-        input.type = "text";
-        console.log("active");
-    }
-    else{
-        passShown = 0;
-        input.type = "password";
-        console.log("not active");
-    }
-}
-
+<script type="text/javascript" src="script.js">
 </script>
-
 </html>

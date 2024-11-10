@@ -8,15 +8,30 @@ require_once 'conn.php';
     }
 
 session_start();
-
 $email = $_POST["email"];
 $pass = $_POST["pass"];
 
-$sql = "SELECT `email`,`password` from `konta` where `email` = '$email' && `password` = '$pass'";
-$result = $conn -> query($sql);
+$sql = $conn->prepare("SELECT `email`,`password`,`username`,`phone` from `konta` where `email` = ?");
+$sql -> bind_param("s",$email);
+$sql->execute();
+$result = $sql->get_result();
 if($result -> num_rows > 0){
-    $_SESSION['email'] = $email;
-    $_SESSION['password'] = $pass;
+    while($row = $result -> fetch_assoc()){
+        if(password_verify($pass, $row['password'])) {
+            $_SESSION['email'] = $email;
+            $passwordh = password_hash($pass,PASSWORD_DEFAULT);
+            $_SESSION['password'] = $passwordh;
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['phone'] = $row['phone'];
+            header('Location: userPanel.php');
+            exit();        
+            }
+        else{
+            header("Location: loginPage.php");
+            $_SESSION['fail'] = 2;
+            exit();
+        }
+    }
 }
 else{
     header("Location: loginPage.php");

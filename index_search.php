@@ -8,16 +8,11 @@
 </head>
 
 <?php    
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-
-    $conn = new mysqli($servername,$username,$password, "firma");
-    
+    include_once('conn.php');
     if(mysqli_connect_error()) {
         die("conn" . mysqli_connect_error());
     }
-
+    session_start();
 ?>
 
 <body>
@@ -28,7 +23,15 @@
         <div class="scaling">
             <a href="index.php">Firma</a>
             <div class="headerhrefs">
-                <div class="account"><a href="loginPage.php">ACCOUNT</a></div>
+                <div class="account">
+                <?php 
+                if($_SESSION['username'] == ""){
+                    echo("<a href='loginPage.php'>ACCOUNT</a></div>");
+                }
+                else{
+                    echo("<a href='userPanel.php'>ACCOUNT</a></div>");
+                }
+                ?>
                 <div class="youroffers"><a>YOUR OFFERS</a></div>
                 <div class="support"><a>SUPPORT</a></div>
                 <button onclick="openin()" style="all:unset; cursor: pointer;height: 40px;margin-bottom:5px"><div id="src"><a><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -52,9 +55,12 @@
     <div class="offers">
     <div class="sctitle">Wyniki wyszukiwania:</div>
     <?php
-$searchbar = $_POST["searchbar"];
-$sql = "SELECT  id, zdj1, nazwa, opis, telefon, stan, cena, ilosc from oferty where nazwa like '%$searchbar%'";
-$result = $conn-> query($sql);
+
+    $searchbar = "%" . strval($_POST["searchbar"]) . "%";
+    $sql = $conn -> prepare("SELECT id, zdj1, nazwa, opis, telefon, stan, cena, ilosc from oferty where nazwa like ?");
+    $sql -> bind_param("s" ,$searchbar);
+    $sql -> execute();
+    $result = $sql -> get_result();
 
 if($result-> num_rows > 0){
     while ($row = $result-> fetch_assoc()) {
